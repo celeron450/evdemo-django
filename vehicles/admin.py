@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Make, Model, Trim
+
+
+admin.site.register(Make)
+admin.site.register(Model)
+admin.site.register(Trim)
