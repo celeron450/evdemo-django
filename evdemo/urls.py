@@ -20,6 +20,6 @@ from vehicles.views import index
 
 urlpatterns = [
     path('', index, name='index'),
-    path('vehicles', include('vehicles.urls')),
+    path('vehicles/', include('vehicles.urls')),
     path('admin/', admin.site.urls),
 ]
