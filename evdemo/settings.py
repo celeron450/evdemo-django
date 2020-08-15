@@ -123,6 +123,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = [
+    "https://evdemo-react.herokuapp.com/",
 ]
 
 django_heroku.settings(locals())
