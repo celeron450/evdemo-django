@@ -9,21 +9,21 @@ def index(request):
     return HttpResponse("EV Demo")
 
 
-class MakeViewSet(viewsets.ModelViewSet):
+class MakeViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Make.objects.all()
     serializer_class = MakeSerializer
 
 
-class ModelViewSet(viewsets.ModelViewSet):
+class ModelViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Model.objects.all()
     serializer_class = ModelSerializer
 
 
-class ModelYearViewSet(viewsets.ModelViewSet):
+class ModelYearViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ModelYear.objects.all()
     serializer_class = ModelYearSerializer
 
 
-class TrimViewSet(viewsets.ModelViewSet):
+class TrimViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Trim.objects.all()
     serializer_class = TrimSerializer
