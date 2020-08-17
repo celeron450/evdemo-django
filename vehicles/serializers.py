@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from .models import Make, Model, ModelYear, Trim
+from .models import Make, MediaLicense, Model, ModelYear, Trim
+
+
+class MediaLicenseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MediaLicense
+        fields = ['id', 'name', 'url']
 
 
 class MakeSerializer(serializers.ModelSerializer):
@@ -19,10 +25,15 @@ class ModelSerializer(serializers.ModelSerializer):
 
 class ModelYearSerializer(serializers.ModelSerializer):
     model = ModelSerializer()
+    image_license = MediaLicenseSerializer()
 
     class Meta:
         model = ModelYear
-        fields = ['id', 'model', 'year']
+        fields = [
+            'id', 'model', 'year', 'manufacturer_url', 'image_url', 'thumbnail_url',
+            'image_attribution_title', 'image_attribution_url', 'image_attribution_author',
+            'image_attribution_author_url', 'image_license',
+        ]
 
 
 class TrimSerializer(serializers.ModelSerializer):

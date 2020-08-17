@@ -1,6 +1,14 @@
 from django.db import models
 
 
+class MediaLicense(models.Model):
+    name = models.CharField(max_length=200)
+    url = models.CharField(max_length=2000)
+
+    def __str__(self):
+        return self.name
+
+
 class Make(models.Model):
     name = models.CharField(max_length=100)
 
@@ -18,6 +26,14 @@ class Model(models.Model):
 class ModelYear(models.Model):
     model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='model_years')
     year = models.IntegerField()
+    manufacturer_url = models.CharField(max_length=2000, null=True, blank=True)
+    image_url = models.CharField(max_length=2000, null=True, blank=True)
+    thumbnail_url = models.CharField(max_length=2000, null=True, blank=True)
+    image_attribution_title = models.CharField(max_length=100, null=True, blank=True)
+    image_attribution_url = models.CharField(max_length=2000, null=True, blank=True)
+    image_attribution_author = models.CharField(max_length=100, null=True, blank=True)
+    image_attribution_author_url = models.CharField(max_length=2000, null=True, blank=True)
+    image_license = models.ForeignKey(MediaLicense, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return '{} {}'.format(self.year, self.model)
