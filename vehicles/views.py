@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from rest_framework import viewsets
 
 from .models import Make, Model, ModelYear, Trim
-from .serializers import MakeSerializer, ModelSerializer, ModelYearSerializer, TrimSerializer
+from .serializers import MakeSerializer, ModelSerializer, ModelYearFullSerializer, ModelYearSerializer, TrimSerializer
 
 
 def index(request):
@@ -22,6 +22,11 @@ class ModelViewSet(viewsets.ReadOnlyModelViewSet):
 class ModelYearViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ModelYear.objects.all()
     serializer_class = ModelYearSerializer
+
+
+class ModelYearFullViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ModelYear.objects.all()
+    serializer_class = ModelYearFullSerializer
 
 
 class TrimViewSet(viewsets.ReadOnlyModelViewSet):
