@@ -39,13 +39,18 @@ class ModelYearSerializer(serializers.ModelSerializer):
     model = ModelSerializer()
     image_license = MediaLicenseSerializer()
     body_style = BodyStyleSerializer()
+    available_drive_types = DriveTypeSerializer(many=True)
 
     class Meta:
         model = ModelYear
         fields = [
             'id', 'model', 'year', 'manufacturer_url', 'image_url', 'thumbnail_url',
             'image_attribution_title', 'image_attribution_url', 'image_attribution_author',
-            'image_attribution_author_url', 'image_license', 'body_style',
+            'image_attribution_author_url', 'image_license', 'body_style', 'available_drive_types',
+            'seating_capacity_range', 'mpge_city_range', 'mpge_highway_range', 'mpge_combined_range',
+            'range_city_range', 'range_highway_range', 'range_combined_range', 'charge_time_hours_240v_range',
+            'kwh_per_100mi_range', 'horsepower_range', 'torque_range', 'zero_to_sixty_seconds_range',
+            'starting_msrp_range',
         ]
 
 
